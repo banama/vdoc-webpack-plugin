@@ -7,12 +7,7 @@ function VdocWebpackPlugin(options){
 
     this.options = options;
     this.readFolder(options.doc, ['swp'].concat(options.ignore || []))
-    try{
-        fs.statSync(options.outFile).isFile()
-    }
-    catch(e){
-        fs.writeFileSync(options.outFile, JSON.stringify(global.__vdoc_ob__))
-    }
+    fs.writeFileSync(options.outFile, JSON.stringify(global.__vdoc_ob__))
 }
 
 VdocWebpackPlugin.prototype.readFolder = function(path, ignore){
